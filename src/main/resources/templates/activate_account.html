@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activation</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        .greeting {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        .activation-code {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 30px;
+            padding: 10px;
+            border: 2px dashed #007bff;
+            display: inline-block;
+        }
+        .activation-link {
+            margin-top: 20px;
+        }
+        .activation-link a {
+            padding: 12px 24px;
+            background-color: #28a745;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .activation-link a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Account Activation</h1>
+    <p class="greeting" th:text="'Hello ' + ${username} + ','"></p>
+    <p>Thank you for signing up! Please use the following activation code to activate your account:</p>
+    <div class="activation-code"><span th:text="${activationCode}"></span></div>
+    <div class="activation-link">
+        <a th:href="${confirmationUrl}" target="_blank">Activate your account</a>
+    </div>
+</div>
+</body>
+</html>
