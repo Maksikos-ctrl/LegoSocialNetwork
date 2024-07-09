@@ -2,11 +2,13 @@ package com.lego.store.legosocialnetwork.lego;
 
 import com.lego.store.legosocialnetwork.general.LegoCatalog;
 import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/legos")
@@ -76,6 +78,39 @@ public class LegoController {
         return ResponseEntity.ok(service.updateArchivedStatus(legoId, connectedUser));
     }
 
+
+    @PostMapping("/borrow/{lego-id}")
+    public ResponseEntity<Integer> borrowLego(
+            @PathVariable("lego-id") Integer legoId,
+            Authentication connectedUser
+    ) {
+        return ResponseEntity.ok(service.borrowLego(legoId, connectedUser));
+    }
+
+    @PatchMapping("/borrow/return/{return-id}")
+    public ResponseEntity<Integer> returnLego(
+            @PathVariable("return-id") Integer returnId,
+            Authentication connectedUser
+    ) { return ResponseEntity.ok(service.returnBorrowedLego(returnId, connectedUser)); }
+
+
+    @PatchMapping("/borrow/return/approve/{return-id}")
+    public ResponseEntity<Integer> approvedReturnLego(
+            @PathVariable("return-id") Integer returnId,
+            Authentication connectedUser
+    ) { return ResponseEntity.ok(service.approveReturnBorrowedLego(returnId, connectedUser)); }
+
+    @PostMapping(value = "/cover/{book-id}", consumes = {"multipart/form-data"})
+    public ResponseEntity<?> uploadCoverPicture(
+            @PathVariable("book-id") Integer legoId,
+            @Parameter
+            @RequestPart("file") MultipartFile file,
+            Authentication connectedUser
+    )
+    {
+        service.uploadCoverPicture(file, connectedUser, legoId);
+        return ResponseEntity.accepted().build();
+    }
 
 
 

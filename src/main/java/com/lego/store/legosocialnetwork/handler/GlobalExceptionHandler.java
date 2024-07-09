@@ -1,7 +1,6 @@
 package com.lego.store.legosocialnetwork.handler;
 
-import com.lego.store.legosocialnetwork.lego.exception.OperationNotPermittedException;
-import org.springframework.http.HttpStatus;
+import com.lego.store.legosocialnetwork.exception.OperationNotPermittedException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;

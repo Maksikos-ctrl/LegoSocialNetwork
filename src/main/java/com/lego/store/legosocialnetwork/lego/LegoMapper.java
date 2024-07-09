@@ -1,6 +1,7 @@
 package com.lego.store.legosocialnetwork.lego;
 
 
+import com.lego.store.legosocialnetwork.file.FileUtils;
 import com.lego.store.legosocialnetwork.history.LegoTransactionHistory;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class LegoMapper {
                 .setDescription(lego.getSetDescription())
                 .owner(lego.getOwner().fullName())
                 // TODO: implement a bit later
-//                .cover(lego.getCover())
+                .cover(FileUtils.readFileFromLocation(lego.getLegoThemeCover()))
                 .rate(lego.getRate())
                 .archived(lego.isArchived())
                 .shareable(lego.isShareable())

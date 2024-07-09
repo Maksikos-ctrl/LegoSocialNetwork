@@ -18,13 +18,16 @@ import lombok.experimental.SuperBuilder;
 @Entity
 public class Feedback extends BaseEntity {
 
-    private Double note; //TODO  1-5 stars implement
+    @Column
+    private Double note;
     private String comment;
-
     @ManyToOne
-    @JoinColumn(name = "lego_id", nullable = false)
+    @JoinColumn(name = "lego_id")
     private Lego lego;
-
+    @Getter
+    @Setter
+    @Id
+    private Long id;
 
 
 }

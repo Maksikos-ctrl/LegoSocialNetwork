@@ -1,6 +1,7 @@
 package com.lego.store.legosocialnetwork.general;
 
 
+import com.lego.store.legosocialnetwork.feedback.FeedbackResponse;
 import lombok.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class LegoCatalog<T> {
     private int totalCatalogs;
     private boolean first;
     private boolean last;
+
 
 
 }

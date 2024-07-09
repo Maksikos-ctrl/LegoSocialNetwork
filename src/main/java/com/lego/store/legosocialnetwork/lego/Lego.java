@@ -34,8 +34,10 @@ public class Lego extends BaseEntity {
     @JoinColumn(name = "owner_id", nullable = false) // by default hibernate uses owner_id as the name
     private User owner;
 
+
     @OneToMany(mappedBy = "lego")
     private List<Feedback> feedbacks;
+
 
     @OneToMany(mappedBy = "lego")
     private List<LegoTransactionHistory> transactionHistories;

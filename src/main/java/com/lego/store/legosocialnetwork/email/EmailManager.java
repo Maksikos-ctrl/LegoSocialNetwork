@@ -4,6 +4,7 @@ package com.lego.store.legosocialnetwork.email;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -15,9 +16,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.springframework.mail.javamail.MimeMessageHelper.MULTIPART_MODE_MIXED;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class EmailManager {
 
@@ -46,7 +49,7 @@ public class EmailManager {
         MimeMessageHelper helper = new MimeMessageHelper(
                 mimeMessage,
                 MULTIPART_MODE_MIXED,
-                StandardCharsets.UTF_8.name()
+                UTF_8.name()
         );
         Map<String, Object> props = new HashMap<>();
         props.put("username", username);

@@ -15,7 +15,7 @@ public interface LegoManager extends JpaRepository<Lego, Integer>, JpaSpecificat
             FROM Lego lego
             WHERE lego.archived = false
             AND lego.shareable = true
-            AND lego.owner.id != :ususerId
+            AND lego.owner != :userId
             """)
     Page<Lego> findAllDisplayableLegos(Pageable catalogable, Integer userId);
 

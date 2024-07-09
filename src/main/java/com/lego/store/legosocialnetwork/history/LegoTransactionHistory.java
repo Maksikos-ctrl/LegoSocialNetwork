@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+
+
 @Getter
 @Setter
 @SuperBuilder
@@ -19,22 +21,37 @@ import lombok.experimental.SuperBuilder;
 @Entity
 public class LegoTransactionHistory extends BaseEntity {
 
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "lego_id", nullable = false)
+//    private Lego lego;
+//
+//    //TODO: implement user relatioship
+//    //TODO: implement lego relatioship
+//
+//    private boolean returned;
+//    private boolean returnApproved;
+//    @Getter
+//    @Setter
+//    @Id
+//    private Long id;
+
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
-    @JoinColumn(name = "lego_id", nullable = false)
+    @JoinColumn(name = "lego_id")
     private Lego lego;
-
-    //TODO: implement user relatioship
-    //TODO: implement lego relatioship
-
     private boolean returned;
     private boolean returnApproved;
     @Getter
     @Setter
     @Id
     private Long id;
+
+
 
 
 }
